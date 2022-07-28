@@ -17,7 +17,11 @@ use App\Http\Controllers\FormController;
 Route::get('/', function () {
     return view('index');
 });
-Route::get('/form', [App\Http\Controllers\FormController::class, 'index'])->name('form');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/form', [App\Http\Controllers\FormController::class, 'index'])->name('form');
+    Route::post('/form/add', [App\Http\Controllers\FormController::class, 'store'])->name('form-add');
+});
+
 
 Auth::routes();
 
