@@ -22,3 +22,4 @@ Route::get('/form', [App\Http\Controllers\FormController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/logout', 'Auth\LoginController@logout')->name('get-logout');
