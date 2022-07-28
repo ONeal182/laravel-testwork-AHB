@@ -32,6 +32,26 @@
                     <a class="nav-link" href="#">Link</a>
                 </li>
             </ul>
+            @guest
+                <ul class="navbar-nav form-inline my-2 my-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ route('login') }}">Войти <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">Регистрация</a>
+                    </li>
+                </ul>
+            @endguest
+            @auth
+                <ul class="navbar-nav form-inline my-2 my-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ route('get-logout') }}">Выйти <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Личный кабинет</a>
+                    </li>
+                </ul>
+            @endauth
         </div>
     </nav>
     <div class="container">
