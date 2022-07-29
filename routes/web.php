@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\FormController;
+use App\Http\Controllers\Admin\Docs\DocsController;
+use App\Http\Controllers\Admin\Product\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,11 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/form', [App\Http\Controllers\FormController::class, 'index'])->name('form');
     Route::post('/form/add', [App\Http\Controllers\FormController::class, 'store'])->name('form-add');
+
+    Route::get('/admin',[App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin');
+    Route::resource('/admin/docs', DocsController::class);
+    Route::resource('/admin/products', ProductController::class);
+
 });
 
 
