@@ -17,9 +17,6 @@ class CsvImport implements ImportContract
         $file = preg_replace('/\; /', " ", $file);
         $file = preg_replace('/\"\n/', "\n", $file);
         $file = str_replace('\\','', $file);
-        
-        // dd($file);
-        
         $rows = explode(PHP_EOL, $file);
         $data = [];
         
@@ -29,7 +26,6 @@ class CsvImport implements ImportContract
         if($showHeader !== true){
             unset($data[0]);
         }
-        // dd($data[1]);
 
         return $data;
     }
@@ -49,7 +45,6 @@ class CsvImport implements ImportContract
             }
             $new_arry[$key]['description'] = preg_replace("/[\r\n]/", '', $new_arry[$key]['description']);
             $product = Product::updateOrCreate(['code' => $new_arry[$key]['code']], $new_arry[$key])->wasRecentlyCreated;
-            // dd($new_arry[$key]);
             if($product === true){
                 $status['create']++;
             }else{
