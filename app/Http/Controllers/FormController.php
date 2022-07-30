@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\File;
 use Illuminate\Http\Request;
 use App\Http\Requests\FileRequest;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 
 
 class FormController extends Controller
 {
-    public function index()
+    public function index() : View
     {
 
         $success = session('success');
@@ -21,7 +23,7 @@ class FormController extends Controller
         return view('form', compact('success'));
     }
 
-    public function store(FileRequest $request)
+    public function store(FileRequest $request) : RedirectResponse
     {
         // dd($request);
         $id =  Auth::user()->id;

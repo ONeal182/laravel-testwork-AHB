@@ -18,7 +18,7 @@ class DocsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index() : View
     {
         $docs = Auth::user()->file()->get();
         
@@ -57,7 +57,7 @@ class DocsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id, File $files)
+    public function show($id, File $files) : View
     {
         $file = $files::where('id', $id)->get()->first();
         // dd( 'App\Utilities\ImportProduct\\' . ucfirst($file->type) . 'Import');
